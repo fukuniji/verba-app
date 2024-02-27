@@ -1,0 +1,29 @@
+.line_editing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 80vw;
+
+  border-bottom: 2px solid grey;
+
+  padding-top: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 3px;
+}
+
+.input {
+  justify-self: self-start;
+  width: 10vw;
+}
+.button {
+  cursor: pointer;
+}
+
+.button_save {
+  background-color: lightgreen;
+}
+
+.button_cancel {
+  background-color: lightpink;
+}

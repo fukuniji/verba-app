@@ -1,0 +1,30 @@
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 80vw;
+
+  border-bottom: 2px solid grey;
+
+  padding-top: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 3px;
+
+  div {
+    justify-self: self-start;
+    width: 10vw;
+  }
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button_edit {
+  background-color: lightblue;
+}
+
+.button_delete {
+  background-color: lightcoral;
+}
