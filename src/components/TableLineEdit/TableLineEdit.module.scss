@@ -1,4 +1,4 @@
-.table_header_wrapper {
+.line_editing {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12,7 +12,18 @@
   margin-bottom: 3px;
 }
 
-.table_heading {
+.input {
   justify-self: self-start;
   width: 10vw;
+}
+.button {
+  cursor: pointer;
+}
+
+.button_save {
+  background-color: lightgreen;
+}
+
+.button_cancel {
+  background-color: lightpink;
 }

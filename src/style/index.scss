@@ -1,8 +1,18 @@
 @import "./templates";
 @import "./vars";
+@import "./fonts";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-family: $font-texts;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 100%;
+  color: $color-primary;
+  background-color: $clr-bg-frame;
 }

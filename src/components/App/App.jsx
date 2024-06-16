@@ -4,6 +4,8 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 
 import style from "./App.module.scss";
+import "../../style/index.scss";
+import data from "../../data.json";
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
       <div className={style.container}>
         <h1>Verba</h1>
         <Header />
-        <Main />
+        <Main data={data} />
         <Footer />
       </div>
     </>
