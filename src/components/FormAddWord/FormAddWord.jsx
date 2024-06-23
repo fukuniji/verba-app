@@ -2,7 +2,7 @@ import style from "./FormAddWord.module.scss";
 
 export default function FormAddWord() {
   return (
-    <>
+    <div className={style.container}>
       <h2 id="addSection">Добавление нового слова</h2>
       <form className={style.word_adding}>
         <input type="text" className={style.input} placeholder="Слово" />
@@ -24,6 +24,6 @@ export default function FormAddWord() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
