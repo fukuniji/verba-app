@@ -2,10 +2,10 @@ import style from "./TableLine.module.scss";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/trash.svg";
 import TableLineEdit from "../TableLineEdit/TableLineEdit";
+import { useState } from "react";
 
 export default function TableLine(props) {
-  const editing = false;
-  // const editing = true;
+  const [editing, setEditing] = useState(false);
 
   return (
     <>
@@ -16,7 +16,10 @@ export default function TableLine(props) {
           <div className={style.line_transc}>{props.transc}</div>
           <div className={style.line_theme}>{props.theme}</div>
           <div className={style.line_edit}>
-            <button className={`${style.button_edit} ${style.button}`}>
+            <button
+              className={`${style.button_edit} ${style.button}`}
+              onClick={() => setEditing(true)}
+            >
               <img src={editIcon} alt="Edit" title="Редактировать" />
             </button>
             <button className={`${style.button_delete} ${style.button}`}>
@@ -30,7 +33,8 @@ export default function TableLine(props) {
           transl={props.transl}
           transc={props.transc}
           theme={props.theme}
-        ></TableLineEdit>
+          setEditing={setEditing}
+        />
       )}
     </>
   );
