@@ -1,4 +1,30 @@
+@use "src/style/_vars";
+
 .card {
   display: flex;
   flex-direction: column;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  color: vars.$color-text-white;
+  transition: background-color 0.6s;
+
+  &:hover {
+    transition: background-color 0.8s;
+  }
+}
+
+.button_flip {
+  background-color: vars.$color-focus;
+  &:hover {
+    background-color: rgba(vars.$color-focus, 0.66);
+    transition: background-color 0.8s;
+  }
+}
+
+.translation {
+  color: vars.$color-focus;
+  font-weight: bolder;
 }
