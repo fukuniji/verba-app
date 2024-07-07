@@ -1,35 +1,22 @@
 import style from "./TableLineEdit.module.scss";
-import { useState } from "react";
 
 export default function TableLineEdit(props) {
-  const [editedWord, setEditedWord] = useState(props.word);
-  const [editedTransl, setEditedTransl] = useState(props.transl);
-  const [editedTransc, setEditedTransc] = useState(props.transc);
-  const [editedTheme, setEditedTheme] = useState(props.theme);
+  const {
+    word,
+    transl,
+    transc,
+    theme,
+    setWord,
+    setTransl,
+    setTransc,
+    setTheme,
+    setEditing,
+    cancelEdit,
+  } = props;
 
   const saveLine = (e) => {
     e.preventDefault();
-    console.log(
-      "Изменения сохранены:",
-      "Word:",
-      editedWord,
-      "Transl:",
-      editedTransl,
-      "Transc:",
-      editedTransc,
-      "Theme:",
-      editedTheme
-    );
-    props.setEditing(false);
-  };
-
-  const cancelEdit = (e) => {
-    e.preventDefault();
-    setEditedWord(props.word);
-    setEditedTransl(props.transl);
-    setEditedTransc(props.transc);
-    setEditedTheme(props.theme);
-    props.setEditing(false);
+    setEditing(false);
   };
 
   return (
@@ -38,26 +25,26 @@ export default function TableLineEdit(props) {
         <input
           type="text"
           className={style.input}
-          value={editedWord}
-          onChange={(e) => setEditedWord(e.target.value)}
+          value={word}
+          onChange={(e) => setWord(e.target.value)}
         />
         <input
           type="text"
           className={style.input}
-          value={editedTransl}
-          onChange={(e) => setEditedTransl(e.target.value)}
+          value={transl}
+          onChange={(e) => setTransl(e.target.value)}
         />
         <input
           type="text"
           className={style.input}
-          value={editedTransc}
-          onChange={(e) => setEditedTransc(e.target.value)}
+          value={transc}
+          onChange={(e) => setTransc(e.target.value)}
         />
         <input
           type="text"
           className={style.input}
-          value={editedTheme}
-          onChange={(e) => setEditedTheme(e.target.value)}
+          value={theme}
+          onChange={(e) => setTheme(e.target.value)}
         />
         <div className={style.edit_cell}>
           <button

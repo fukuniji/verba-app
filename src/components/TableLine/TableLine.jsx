@@ -6,15 +6,28 @@ import { useState } from "react";
 
 export default function TableLine(props) {
   const [editing, setEditing] = useState(false);
+  const [word, setWord] = useState(props.word);
+  const [transl, setTransl] = useState(props.transl);
+  const [transc, setTransc] = useState(props.transc);
+  const [theme, setTheme] = useState(props.theme);
+
+  const cancelEdit = (e) => {
+    e.preventDefault();
+    setWord(props.word);
+    setTransl(props.transl);
+    setTransc(props.transc);
+    setTheme(props.theme);
+    setEditing(false);
+  };
 
   return (
     <>
       {!editing ? (
         <div className={style.line}>
-          <div className={style.line_word}>{props.word}</div>
-          <div className={style.line_transl}>{props.transl}</div>
-          <div className={style.line_transc}>{props.transc}</div>
-          <div className={style.line_theme}>{props.theme}</div>
+          <div className={style.line_word}>{word}</div>
+          <div className={style.line_transl}>{transl}</div>
+          <div className={style.line_transc}>{transc}</div>
+          <div className={style.line_theme}>{theme}</div>
           <div className={style.line_edit}>
             <button
               className={`${style.button_edit} ${style.button}`}
@@ -29,11 +42,16 @@ export default function TableLine(props) {
         </div>
       ) : (
         <TableLineEdit
-          word={props.word}
-          transl={props.transl}
-          transc={props.transc}
-          theme={props.theme}
+          word={word}
+          transl={transl}
+          transc={transc}
+          theme={theme}
+          setWord={setWord}
+          setTransl={setTransl}
+          setTransc={setTransc}
+          setTheme={setTheme}
           setEditing={setEditing}
+          cancelEdit={cancelEdit}
         />
       )}
     </>
