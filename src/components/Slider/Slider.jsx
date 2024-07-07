@@ -1,12 +1,29 @@
 import style from "./Slider.module.scss";
 import back from "../../assets/back.svg";
 import forward from "../../assets/forward.svg";
+import { useState } from "react";
 
-export default function Slider({ children }) {
+export default function Slider({ children, data = [] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? data.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === data.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const isEndOfDeck = currentIndex === data.length - 1;
+
   return (
     <>
       <div className={style.slider_wrapper}>
-        <button className={style.slider_btn}>
+        <button className={style.slider_btn} onClick={handlePrev}>
           <img
             className={style.slider_arrow}
             src={back}
@@ -14,8 +31,22 @@ export default function Slider({ children }) {
             title="Назад"
           />
         </button>
-        {children}
-        <button className={style.slider_btn}>
+        {children(data[currentIndex])}
+        {/* {!isEndOfDeck && (
+          <button className={style.slider_btn} onClick={handleNext}>
+            <img
+              className={style.slider_arrow}
+              src={forward}
+              alt="forward"
+              title="Вперед"
+            />
+          </button>
+        )} */}
+        <button
+          className={isEndOfDeck ? style.slider_btn_disabled : style.slider_btn}
+          onClick={handleNext}
+          disabled={isEndOfDeck}
+        >
           <img
             className={style.slider_arrow}
             src={forward}

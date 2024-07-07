@@ -1,16 +1,20 @@
 import style from "./Card.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Card({ data }) {
+export default function Card({ word }) {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  useEffect(() => {
+    setIsFlipped(false);
+  }, [word]);
 
   return (
     <>
       <div className={style.card}>
-        <h3>{data[0].english}</h3>
-        <p>{data[0].transcription}</p>
+        <h3>{word.english}</h3>
+        <p>{word.transcription}</p>
         {isFlipped ? (
-          <p className={style.translation}>{data[0].russian}</p>
+          <p className={style.translation}>{word.russian}</p>
         ) : (
           <button
             onClick={() => {

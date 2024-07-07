@@ -17,8 +17,9 @@ export default function Main({ data }) {
         </section>
         <section className={style.card_section}>
           <h2>Карточки</h2>
-          <Slider>
-            <Card data={data} />
+          <Slider data={data}>
+            {/* <Card data={data} /> */}
+            {(word) => <Card word={word} />}
           </Slider>
         </section>
         <FormAddWord />
