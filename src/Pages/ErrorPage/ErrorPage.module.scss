@@ -1,0 +1,11 @@
+.error404_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+}
+
+.error_img {
+  max-width: 40%;
+  object-fit: contain;
+}
