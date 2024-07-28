@@ -1,1 +1,19 @@
+@use "src/style/_vars";
 
+.card_section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-bottom: 2px solid vars.$color-primary;
+}
+
+.learned {
+  align-self: center;
+
+  font-family: vars.$font-subtitles;
+  color: vars.$color-info;
+
+  padding-top: 2vw;
+  margin-bottom: 2vw;
+}

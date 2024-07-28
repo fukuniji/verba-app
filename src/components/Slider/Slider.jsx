@@ -21,7 +21,7 @@ export default function Slider({ children, data = [] }) {
   const isEndOfDeck = currentIndex === data.length - 1;
 
   return (
-    <>
+    <div className={style.container}>
       <div className={style.slider_wrapper}>
         <button className={style.slider_btn} onClick={handlePrev}>
           <img
@@ -55,6 +55,9 @@ export default function Slider({ children, data = [] }) {
           />
         </button>
       </div>
-    </>
+      <div className={style.counter}>
+        {currentIndex}/{data.length}
+      </div>
+    </div>
   );
 }
