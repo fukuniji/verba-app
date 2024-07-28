@@ -20,7 +20,11 @@ export default function Cards({ data }) {
       <h2>Карточки</h2>
       <Slider data={data}>
         {(word) => (
-          <Card word={word} handleLearnedWord={() => handleLearnedWord(word)} />
+          <Card
+            word={word}
+            handleLearnedWord={() => handleLearnedWord(word)}
+            focus={focus}
+          />
         )}
       </Slider>
       <p className={style.learned}>
