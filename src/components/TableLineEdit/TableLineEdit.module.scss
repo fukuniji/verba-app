@@ -1,3 +1,5 @@
+@use "src/style/_vars";
+
 .line_editing {
   display: flex;
   flex-direction: row;
@@ -12,15 +14,21 @@
   margin-bottom: 3px;
 }
 
-.input {
-  justify-self: self-start;
-  width: 10vw;
-}
+// .input {
+//   justify-self: self-start;
+//   width: 10vw;
+
+//   .error {
+//     border: 2px solid red;
+//   }
+// }
+
 .button {
   cursor: pointer;
 
   border: none;
 
+  color: vars.$color-text-white;
   transition: background-color 0.6s;
 
   &:hover {
@@ -29,19 +37,28 @@
 }
 
 .button_save {
-  background-color: lightgreen;
+  background-color: vars.$color-focus;
 
   &:hover {
-    background-color: rgba(144, 238, 144, 0.5);
+    background-color: rgba(vars.$color-focus, 0.66);
     transition: background-color 0.8s;
   }
 }
 
 .button_cancel {
-  background-color: lightpink;
+  background-color: vars.$color-warning;
 
   &:hover {
-    background-color: rgba(255, 182, 193, 0.5);
+    background-color: rgba(vars.$color-warning, 0.66);
+    transition: background-color 0.8s;
+  }
+}
+
+.button_inactive {
+  background-color: vars.$color-default;
+  cursor: default;
+  &:hover {
+    background-color: rgba(vars.$color-default, 0.66);
     transition: background-color 0.8s;
   }
 }
