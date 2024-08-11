@@ -1,8 +1,12 @@
 import TableLine from "../TableLine/TableLine";
 
 import style from "./Table.module.scss";
+import { useContext } from "react";
+import { WordsContext } from "../../Context/WordsContext";
 
-export default function Table({ data }) {
+export default function Table() {
+  const { words } = useContext(WordsContext);
+
   return (
     <>
       <div className={style.container}>
@@ -15,16 +19,8 @@ export default function Table({ data }) {
             <div className={style.table_heading}>Тема</div>
             <div className={style.table_heading}>Изменить</div>
           </div>
-          {data.map((item) => {
-            return (
-              <TableLine
-                key={item.id}
-                word={item.english}
-                transl={item.russian}
-                transc={item.transcription}
-                theme={item.tags}
-              />
-            );
+          {words.map((item) => {
+            return <TableLine key={item.id} {...item} />;
           })}
         </div>
       </div>

@@ -6,17 +6,17 @@ import { useState } from "react";
 
 export default function TableLine(props) {
   const [editing, setEditing] = useState(false);
-  const [word, setWord] = useState(props.word);
-  const [transl, setTransl] = useState(props.transl);
-  const [transc, setTransc] = useState(props.transc);
-  const [theme, setTheme] = useState(props.theme);
+  const [word, setWord] = useState(props.english);
+  const [transl, setTransl] = useState(props.russian);
+  const [transc, setTransc] = useState(props.transcription);
+  const [theme, setTheme] = useState(props.tags);
 
   const cancelEdit = (e) => {
     e.preventDefault();
-    setWord(props.word);
-    setTransl(props.transl);
-    setTransc(props.transc);
-    setTheme(props.theme);
+    setWord(props.english);
+    setTransl(props.russian);
+    setTransc(props.transcription);
+    setTheme(props.tags);
     setEditing(false);
   };
 
