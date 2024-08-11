@@ -1,9 +1,11 @@
 import Slider from "../../components/Slider/Slider";
 import Card from "../../components/Card/Card";
 import style from "./Cards.module.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { WordsContext } from "../../Context/WordsContext";
 
-export default function Cards({ data }) {
+export default function Cards() {
+  const { words } = useContext(WordsContext);
   const [learnedWords, setLearnedWords] = useState(new Set());
 
   const handleLearnedWord = (word) => {
@@ -18,7 +20,7 @@ export default function Cards({ data }) {
   return (
     <section className={style.card_section}>
       <h2>Карточки</h2>
-      <Slider data={data}>
+      <Slider data={words}>
         {(word) => (
           <Card
             word={word}
@@ -28,7 +30,7 @@ export default function Cards({ data }) {
         )}
       </Slider>
       <p className={style.learned}>
-        Изучено слов: {learnedWords.size} из {data.length}
+        Изучено слов: {learnedWords.size} из {words.length}
       </p>
     </section>
   );
