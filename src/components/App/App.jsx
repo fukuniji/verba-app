@@ -18,7 +18,7 @@ function App() {
             <Route path="/cards" element={<Cards data={data} />} />
             <Route path="/words" element={<Words data={data} />} />
             <Route path="*" element={<ErrorPage />} />
-          </Routes>{" "}
+          </Routes>
         </main>
         <Footer />
       </div>

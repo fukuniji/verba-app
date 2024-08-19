@@ -6,15 +6,17 @@ export const WordsContext = createContext();
 
 export function WordsProvider({ children }) {
   const [words, setWords] = useState([]);
+  const [loading, setLoading] = useState(true);
   const value = { words, setWords };
 
   useEffect(() => {
     getWords().then((data) => {
       setWords(data);
     });
+    setLoading(false);
   }, []);
 
-  if (words.length === 0) {
+  if (loading) {
     return <Loader />;
   }
   return (
