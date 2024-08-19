@@ -1,11 +1,17 @@
 import TableLine from "../TableLine/TableLine";
-
 import style from "./Table.module.scss";
-import { useContext } from "react";
-import { WordsContext } from "../../Context/WordsContext";
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
+import { useStores } from "../../hooks/useStores";
 
-export default function Table() {
-  const { words } = useContext(WordsContext);
+const Table = observer(() => {
+  const { wordsStore } = useStores();
+
+  useEffect(() => {
+    wordsStore.getData(); // Получаем данные при монтировании компонента
+  }, [wordsStore]);
+
+  const words = wordsStore.words;
 
   return (
     <>
@@ -26,4 +32,6 @@ export default function Table() {
       </div>
     </>
   );
-}
+});
+
+export default Table;

@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App/App.jsx";
-import { WordsProvider } from "./Context/WordsContext.jsx";
 import { BrowserRouter } from "react-router-dom";
+// import { store, StoreContext } from "./Context/StoreContext";
+import { StoreProvider } from "./Context/StoreContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <WordsProvider>
+    {/* <StoreContext.Provider value={store}> */}
+    <StoreProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </WordsProvider>
+    </StoreProvider>
+    {/* </StoreContext.Provider> */}
   </React.StrictMode>
 );

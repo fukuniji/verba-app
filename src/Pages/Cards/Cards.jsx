@@ -1,11 +1,14 @@
 import Slider from "../../components/Slider/Slider";
 import Card from "../../components/Card/Card";
 import style from "./Cards.module.scss";
-import { useState, useContext } from "react";
-import { WordsContext } from "../../Context/WordsContext";
+import { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useStores } from "../../hooks/useStores";
 
-export default function Cards() {
-  const { words } = useContext(WordsContext);
+const Cards = observer(() => {
+  const { wordsStore } = useStores();
+  const words = wordsStore.words;
+
   const [learnedWords, setLearnedWords] = useState(new Set());
 
   const handleLearnedWord = (word) => {
@@ -34,4 +37,6 @@ export default function Cards() {
       </p>
     </section>
   );
-}
+});
+
+export default Cards;
