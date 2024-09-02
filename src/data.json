@@ -1,0 +1,82 @@
+[
+  {
+    "id": "16101",
+    "english": "rain",
+    "transcription": "[reɪn]",
+    "russian": "дождь",
+    "tags": "погода",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16102",
+    "english": "wind",
+    "transcription": "[wɪnd]",
+    "russian": "ветер",
+    "tags": "погода",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16103",
+    "english": "son",
+    "transcription": "[sʌn]",
+    "russian": "сын",
+    "tags": "семья",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16104",
+    "english": "niece",
+    "transcription": "[niːs]",
+    "russian": "племянница",
+    "tags": "семья",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16105",
+    "english": "dress",
+    "transcription": "[dres]",
+    "russian": "платье",
+    "tags": "одежда",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16106",
+    "english": "jeans",
+    "transcription": "[dʒiːnz]",
+    "russian": "джинсы",
+    "tags": "одежда",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16107",
+    "english": "red",
+    "transcription": "[red]",
+    "russian": "красный",
+    "tags": "цвета",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16108",
+    "english": "white",
+    "transcription": "[waɪt]",
+    "russian": "белый",
+    "tags": "цвета",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16109",
+    "english": "week",
+    "transcription": "[wiːk]",
+    "russian": "неделя",
+    "tags": "время",
+    "tags_json": "[]"
+  },
+  {
+    "id": "16110",
+    "english": "day",
+    "transcription": "[deɪ]",
+    "russian": "день",
+    "tags": "время",
+    "tags_json": "[]"
+  }
+]

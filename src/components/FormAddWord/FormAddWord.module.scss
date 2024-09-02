@@ -1,15 +1,19 @@
 @use "src/style/_vars";
 
-.card {
+.container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 30vw;
-  height: 20vw;
-  border: 2px solid vars.$color-primary;
-  border-radius: 15px;
-  padding: 20px;
+}
+
+.word_adding {
+  display: flex;
+  justify-content: start;
+  gap: 4vw;
+  margin-top: 2vw;
+}
+.add_word_btn {
+  display: flex;
+  gap: 1vw;
 }
 
 .button {
@@ -23,7 +27,7 @@
   }
 }
 
-.button_flip {
+.button_save {
   background-color: vars.$color-focus;
   &:hover {
     background-color: rgba(vars.$color-focus, 0.66);
@@ -31,7 +35,14 @@
   }
 }
 
-.translation {
-  color: vars.$color-focus;
-  font-weight: bolder;
+.button_cancel {
+  background-color: vars.$color-default;
+  &:hover {
+    background-color: rgba(vars.$color-default, 0.66);
+    transition: background-color 0.8s;
+  }
+}
+
+.input {
+  border: none;
 }

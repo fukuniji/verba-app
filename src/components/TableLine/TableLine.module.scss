@@ -1,0 +1,53 @@
+@use "../../style/index.scss" as tokens;
+
+.line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 80vw;
+
+  border-bottom: 2px solid grey;
+
+  padding-top: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 3px;
+
+  div {
+    justify-self: self-start;
+    width: 10vw;
+  }
+}
+
+.line_edit {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+
+  transition: background-color 0.6s;
+
+  &:hover {
+    transition: background-color 0.8s;
+  }
+}
+
+.button_edit {
+  background-color: tokens.$color-focus;
+  // background-color: $color-default;
+  &:hover {
+    background-color: rgba(tokens.$color-focus, 0.66);
+    transition: background-color 0.8s;
+  }
+}
+
+.button_delete {
+  background-color: tokens.$color-error;
+  &:hover {
+    background-color: rgba(tokens.$color-error, 0.66);
+    transition: background-color 0.8s;
+  }
+}
