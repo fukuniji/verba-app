@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getWords } from "../Services/getWords";
+import { addNewWord } from "../Services/add";
 import { deleteWordById } from "../Services/delete";
 import Loader from "../components/Loader/Loader";
 
@@ -28,6 +29,18 @@ export function WordsProvider({ children }) {
     fetchData();
   }, []);
 
+  const addWord = async (newWord) => {
+    try {
+      const result = await addNewWord(newWord);
+      if (result) {
+        console.log("Added:", result);
+      }
+      setWords([...words, result]);
+    } catch (error) {
+      console.error(`Failed to add new word`, error);
+    }
+  };
+
   const deleteWord = async (id) => {
     try {
       const result = await deleteWordById(id);
@@ -49,7 +62,7 @@ export function WordsProvider({ children }) {
     );
   }
 
-  const value = { words, setWords, deleteWord };
+  const value = { words, setWords, addWord, deleteWord };
 
   return (
     <WordsContext.Provider value={value}>{children}</WordsContext.Provider>

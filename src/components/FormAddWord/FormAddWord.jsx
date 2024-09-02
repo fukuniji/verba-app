@@ -1,8 +1,11 @@
 import style from "./FormAddWord.module.scss";
 import FormInput from "../FormInput/FormInput";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { WordsContext } from "../../Context/WordsContext";
 
 export default function FormAddWord() {
+  const { addWord } = useContext(WordsContext);
+
   const [formData, setFormData] = useState({
     word: "",
     transl: "",
@@ -78,7 +81,14 @@ export default function FormAddWord() {
 
   const saveWord = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const newWord = {
+      english: formData.word,
+      transcription: formData.transc,
+      russian: formData.transl,
+      tags: formData.theme,
+    };
+    console.log("New word: ", newWord);
+    addWord(newWord);
     setFormData({ word: "", transl: "", transc: "", theme: "" });
     setErrors({ word: false, transl: false, transc: false, theme: false });
     setIsFormValid(false);
