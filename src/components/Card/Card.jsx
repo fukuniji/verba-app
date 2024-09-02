@@ -1,12 +1,25 @@
 import style from "./Card.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export default function Card({ word }) {
+export default function Card({ word, handleLearnedWord, focus }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const btnRef = useRef(null);
+
   useEffect(() => {
-    setIsFlipped(false);
+    if (focus && btnRef.current) {
+      btnRef.current.focus();
+    }
+  }, [focus]);
+
+  useEffect(() => {
+    setIsFlipped(false); // Сбрасываем состояние переворота при смене слова
   }, [word]);
+
+  const handleClick = () => {
+    handleLearnedWord(); // Увеличиваем счетчик изученных слов
+    setIsFlipped(true);
+  };
 
   return (
     <>
@@ -17,9 +30,8 @@ export default function Card({ word }) {
           <p className={style.translation}>{word.russian}</p>
         ) : (
           <button
-            onClick={() => {
-              setIsFlipped(true);
-            }}
+            ref={btnRef}
+            onClick={handleClick}
             className={`${style.button_flip} ${style.button}`}
           >
             Посмотреть
