@@ -1,30 +1,12 @@
-import Slider from "../Slider/Slider";
-import Card from "../Card/Card";
-import FormAddWord from "../FormAddWord/FormAddWord";
-import Table from "../Table/Table";
-
 import style from "./Main.module.scss";
 
-export default function Main({ data }) {
+export default function Main() {
   return (
-    <>
-      <main className={style.container}>
-        <section className={style.intro_section}>
-          <p>
-            <span>Verba</span> поможет пополнить ваш словарный запас!
-          </p>
-          <p>Учите новые слова с помощью карточек...</p>
-        </section>
-        <section className={style.card_section}>
-          <h2>Карточки</h2>
-          <Slider data={data}>
-            {/* <Card data={data} /> */}
-            {(word) => <Card word={word} />}
-          </Slider>
-        </section>
-        <FormAddWord />
-        <Table data={data} />
-      </main>
-    </>
+    <section className={style.intro_section}>
+      <p>
+        <span>Verba</span> поможет пополнить ваш словарный запас!
+      </p>
+      <p>Учите новые слова с помощью карточек...</p>
+    </section>
   );
 }
