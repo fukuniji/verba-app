@@ -2,9 +2,12 @@ import style from "./TableLine.module.scss";
 import editIcon from "../../assets/edit.svg";
 import deleteIcon from "../../assets/trash.svg";
 import TableLineEdit from "../TableLineEdit/TableLineEdit";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { WordsContext } from "../../Context/WordsContext";
 
 export default function TableLine(props) {
+  const { deleteWord } = useContext(WordsContext);
+
   const [editing, setEditing] = useState(false);
   const [word, setWord] = useState(props.english);
   const [transl, setTransl] = useState(props.russian);
@@ -35,7 +38,10 @@ export default function TableLine(props) {
             >
               <img src={editIcon} alt="Edit" title="Редактировать" />
             </button>
-            <button className={`${style.button_delete} ${style.button}`}>
+            <button
+              className={`${style.button_delete} ${style.button}`}
+              onClick={() => deleteWord(props.id)}
+            >
               <img src={deleteIcon} alt="Delete" title="Удалить" />
             </button>
           </div>

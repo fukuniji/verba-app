@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { getWords } from "../Services/getWords";
+import { deleteWordById } from "../Services/delete";
 import Loader from "../components/Loader/Loader";
 
 export const WordsContext = createContext();
@@ -8,7 +9,6 @@ export function WordsProvider({ children }) {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const value = { words, setWords };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +28,18 @@ export function WordsProvider({ children }) {
     fetchData();
   }, []);
 
+  const deleteWord = async (id) => {
+    try {
+      const result = await deleteWordById(id);
+      if (result) {
+        console.log("Deleted on the server:", result);
+      }
+      setWords(words.filter((word) => word.id !== id));
+    } catch (error) {
+      console.error(`Failed to delete word (id ${id}):`, error);
+    }
+  };
+
   if (loading) {
     return <Loader />;
   }
@@ -36,6 +48,9 @@ export function WordsProvider({ children }) {
       <div style={{ marginTop: "45vh", textAlign: "center" }}>{error}</div>
     );
   }
+
+  const value = { words, setWords, deleteWord };
+
   return (
     <WordsContext.Provider value={value}>{children}</WordsContext.Provider>
   );
