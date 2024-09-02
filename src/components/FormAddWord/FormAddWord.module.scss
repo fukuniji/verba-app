@@ -36,13 +36,18 @@
 }
 
 .button_cancel {
-  background-color: vars.$color-default;
+  background-color: vars.$color-warning;
   &:hover {
-    background-color: rgba(vars.$color-default, 0.66);
+    background-color: rgba(vars.$color-warning, 0.66);
     transition: background-color 0.8s;
   }
 }
 
-.input {
-  border: none;
+.button_inactive {
+  background-color: vars.$color-default;
+  cursor: default;
+  &:hover {
+    background-color: rgba(vars.$color-default, 0.66);
+    transition: background-color 0.8s;
+  }
 }
