@@ -48,6 +48,7 @@ export default function TableLine(props) {
         </div>
       ) : (
         <TableLineEdit
+          id={props.id}
           word={word}
           transl={transl}
           transc={transc}

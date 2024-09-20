@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { getWords } from "../Services/getWords";
 import { addNewWord } from "../Services/add";
+import { updateWordFromTable } from "../Services/update";
 import { deleteWordById } from "../Services/delete";
 import Loader from "../components/Loader/Loader";
 
@@ -41,6 +42,28 @@ export function WordsProvider({ children }) {
     }
   };
 
+  const updateWord = async (id, updatedWord) => {
+    try {
+      const currentWord = words.find((word) => word.id === id);
+      if (!currentWord) {
+        throw new Error(`Word with id ${id} was not found`);
+      }
+
+      const result = await updateWordFromTable(id, updatedWord);
+      if (result) {
+        console.log("Updated on the server: ", result);
+      }
+      setWords((prevWords) =>
+        prevWords.map((word) => (word.id === id ? result : word))
+      );
+    } catch (error) {
+      console.error(
+        `Failed to update word ${updatedWord.english} (id ${id}):`,
+        error
+      );
+    }
+  };
+
   const deleteWord = async (id) => {
     try {
       const result = await deleteWordById(id);
@@ -62,7 +85,7 @@ export function WordsProvider({ children }) {
     );
   }
 
-  const value = { words, setWords, addWord, deleteWord };
+  const value = { words, setWords, addWord, updateWord, deleteWord };
 
   return (
     <WordsContext.Provider value={value}>{children}</WordsContext.Provider>

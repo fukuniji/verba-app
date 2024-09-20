@@ -1,8 +1,12 @@
 import style from "./TableLineEdit.module.scss";
 import FormInput from "../FormInput/FormInput";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { WordsContext } from "../../Context/WordsContext";
 
 export default function TableLineEdit(props) {
+  const { updateWord } = useContext(WordsContext);
+
   const {
     word: initialWord,
     transl: initialTransl,
@@ -66,7 +70,15 @@ export default function TableLineEdit(props) {
 
   const saveLine = (e) => {
     e.preventDefault();
-    console.log(formData);
+    const updatedWord = {
+      english: formData.word,
+      transcription: formData.transc,
+      russian: formData.transl,
+      tags: formData.theme,
+    };
+    console.log("Updated word: ", updatedWord);
+    updateWord(props.id, updatedWord);
+
     setParentWord(formData.word);
     setParentTransl(formData.transl);
     setParentTransc(formData.transc);
